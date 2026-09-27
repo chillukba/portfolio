@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atthiyya Agustian — Game Programmer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4ef; --ink:#1c1b19; --sub:#6b665e; --line:#d8d3c8;
+    --accent:#a8452f; --card:#ffffff; --tag-bg:#efeae0;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#15140f; --ink:#efece4; --sub:#a29c8e; --line:#332f26;
+      --accent:#e0704f; --card:#1d1b15; --tag-bg:#241f16;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15140f; --ink:#efece4; --sub:#a29c8e; --line:#332f26;
+    --accent:#e0704f; --card:#1d1b15; --tag-bg:#241f16;
+  }
+  html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));}
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Space Grotesk', -apple-system, Segoe UI, sans-serif;
+    line-height:1.55;
+  }
+  .mono{font-family:'JetBrains Mono', ui-monospace, monospace;}
+  a{color:var(--accent);}
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px;}
+
+  header{
+    position:sticky; top:0; z-index:10; background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top,0px);
+  }
+  nav{
+    max-width:880px; margin:0 auto; padding:16px 24px;
+    display:flex; justify-content:space-between; align-items:center;
+    gap:16px; flex-wrap:wrap;
+  }
+  .logo{font-weight:700; font-size:1.05rem; letter-spacing:0.02em;}
+  .navlinks{display:flex; gap:20px; flex-wrap:wrap; font-size:0.92rem;}
+  .navlinks a{color:var(--ink); text-decoration:none; opacity:0.75;}
+  .navlinks a:hover{opacity:1; color:var(--accent);}
+
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  .hero{padding:64px 0 48px;}
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 3.6rem); margin:0 0 6px; line-height:1.05;
+    font-weight:700; letter-spacing:-0.01em;
+  }
+  .hero .role{color:var(--accent); font-size:1.15rem; margin:0 0 20px; font-weight:500;}
+  .hero p.lede{max-width:56ch; color:var(--sub); font-size:1.05rem; margin:0 0 28px;}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:10px 18px; border-radius:2px;
+    text-decoration:none; font-size:0.92rem; border:1px solid var(--ink);
+    color:var(--ink); transition:all .15s ease;
+  }
+  .btn:hover{background:var(--ink); color:var(--bg);}
+  .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .btn.primary:hover{opacity:0.85; background:var(--accent); color:#fff;}
+
+  h2.h{
+    font-size:0.8rem; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--sub); margin:0 0 28px; font-weight:600;
+  }
+  h2.h::before{content:"— "; color:var(--accent);}
+
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:40px;}
+  .about-grid p{color:var(--sub); margin:0 0 14px; max-width:60ch;}
+  .facts{list-style:none; margin:0; padding:0; font-size:0.92rem;}
+  .facts li{padding:8px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:12px;}
+  .facts li span:first-child{color:var(--sub);}
+  .facts li span:last-child{text-align:right;}
+
+  .cards{display:grid; gap:18px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:4px;
+    padding:22px 24px;
+  }
+  .card-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:8px;}
+  .card h3{margin:0; font-size:1.15rem;}
+  .card .year{color:var(--sub); font-size:0.85rem;}
+  .card p.desc{margin:0 0 14px; color:var(--sub); font-size:0.95rem;}
+  .meta{display:flex; flex-wrap:wrap; gap:6px 22px; font-size:0.78rem; color:var(--sub);}
+  .meta b{color:var(--ink); font-weight:500;}
+  .card .link{display:inline-block; margin-top:14px; font-size:0.85rem;}
+
+  .skills-groups{display:grid; gap:22px;}
+  .skillrow{display:flex; gap:16px; flex-wrap:wrap; align-items:baseline;}
+  .skillrow .label{width:150px; flex-shrink:0; color:var(--sub); font-size:0.85rem;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    background:var(--tag-bg); border:1px solid var(--line); border-radius:20px;
+    padding:5px 13px; font-size:0.82rem;
+  }
+
+  footer{padding:48px 0 64px;}
+  .contact-row{display:flex; flex-wrap:wrap; gap:10px 24px; font-size:0.95rem; margin-bottom:18px;}
+  .copyright{color:var(--sub); font-size:0.8rem; margin-top:32px;}
+
+  @media (max-width:640px){
+    .about-grid{grid-template-columns:1fr;}
+    .skillrow{flex-direction:column; gap:8px;}
+    .skillrow .label{width:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Atthiyya Agustian</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <p class="mono role">Game Programmer — Unreal Engine (C++/Blueprint) &amp; Unity (C#)</p>
+    <h1>Hi, I'm Atthiyya.<br>I build systems for games people replay.</h1>
+    <p class="lede">I work across multiplayer character frameworks, gameplay AI, and narrative systems — from indie horror to co-op strategy to MMORPG-scale tooling. Currently based in Lisbon.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#work">See the work</a>
+      <a class="btn" href="mailto:atthiyya@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/atthiyya/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.youtube.com/watch?v=J8Qv0I2OCHI&list=PLpRAvYC3FrIiaON73iXjSrjrmWgmAv2Tv" target="_blank" rel="noopener">Watch reel</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="h">About</h2>
+    <div class="about-grid">
+      <div>
+        <p>I'm a game programmer from Indonesia, now based in Lisbon, Portugal, pursuing an MA with the REPLAY Consortium (Lusófona University, LUCA School of Arts, and Aalto University). My work spans multiplayer character systems, gameplay AI, VR, and story-driven mechanics — mostly in Unreal Engine, sometimes Unity.</p>
+        <p>I've shipped titles solo and led small teams through full production, from a two-week horror game jam to a year-plus co-op strategy title. My design principle is simple: build systems sustainable and replayable enough that players want to come back.</p>
+      </div>
+      <ul class="facts mono">
+        <li><span>Based in</span><span>Lisbon, PT</span></li>
+        <li><span>Currently</span><span>MA, REPLAY Consortium</span></li>
+        <li><span>Engines</span><span>Unreal Engine 5, Unity</span></li>
+        <li><span>Languages</span><span>Indonesian, English</span></li>
+        <li><span>Available for</span><span>Freelance / contract</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2 class="h">Selected work</h2>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-top"><h3>Fillet Fury</h3><span class="year mono">2025–26 · PC</span></div>
+        <p class="desc">A co-op strategy game using a card-and-knife duel as its punishment mechanic. Led the team through the full production cycle as project lead.</p>
+        <div class="meta mono">
+          <span><b>Role:</b> Lead Developer</span>
+          <span><b>Studio:</b> Sundawn Studios</span>
+          <span><b>Team:</b> Small multi-person</span>
+          <span><b>Engine:</b> Unreal Engine 5, Blueprint</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>The Lingering: Graveyard Visit</h3><span class="year mono">2025 · PC / Steam</span></div>
+        <p class="desc">Episodic atmospheric horror walking-sim inspired by Indonesian urban legends. Sole programmer for exploration, dialogue, and branching-narrative systems, built with a retro PSX aesthetic.</p>
+        <div class="meta mono">
+          <span><b>Role:</b> Solo Programmer</span>
+          <span><b>Studio:</b> Storytale</span>
+          <span><b>Team:</b> 1 (freelance)</span>
+          <span><b>Engine:</b> Unreal Engine 5</span>
+        </div>
+        <a class="link mono" href="https://store.steampowered.com/app/3731150/The_Lingering_Graveyard_Visit/" target="_blank" rel="noopener">View on Steam →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>[KOBAKO] It's You Again</h3><span class="year mono">2025 · PC</span></div>
+        <p class="desc">A 3D branching visual novel with eight unique character variants and multiple endings. Built the dialogue, choice-branching, and save/load systems, and streamlined the EN/JP localization pipeline.</p>
+        <div class="meta mono">
+          <span><b>Role:</b> Programmer</span>
+          <span><b>Studio:</b> Storytale</span>
+          <span><b>Engine:</b> Unreal Engine 5</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>XRUN Metaverse</h3><span class="year mono">2024–25 · Meta Quest / Android / Web</span></div>
+        <p class="desc">A cross-platform metaverse game spanning web, Play Store, and Meta Quest. Rebuilt the multiplayer framework for stability, integrated AI voice interaction, and maintained the team's Git pipeline.</p>
+        <div class="meta mono">
+          <span><b>Role:</b> VR Game Developer</span>
+          <span><b>Studio:</b> XRUN Metaverse</span>
+          <span><b>Engine:</b> Unreal Engine</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>The Blind Warrior</h3><span class="year mono">2025 · PC / Steam</span></div>
+        <p class="desc">Action-adventure level design and tooling — researched and laid out levels, built environment tools with PCG, and implemented Blueprint objects across the world.</p>
+        <div class="meta mono">
+          <span><b>Role:</b> Level Designer / Programmer</span>
+          <span><b>Studio:</b> Rizero Studios</span>
+          <span><b>Engine:</b> Unreal Engine, PCG</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><h3>Luffi: Homebound</h3><span class="year mono">2025 · Console</span></div>
+        <p class="desc">Part-time gameplay programmer implementing animation-driven gameplay, CommonUI for console, and GDD-based mini-games.</p>
+        <div class="meta mono">
+          <span><b>Role:</b> Gameplay Programmer</span>
+          <span><b>Studio:</b> One Up Plus Entertainment</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="h">Skills</h2>
+    <div class="skills-groups">
+      <div class="skillrow">
+        <span class="label mono">Engines</span>
+        <div class="tags">
+          <span class="tag">Unreal Engine 5 (C++)</span>
+          <span class="tag">Blueprint</span>
+          <span class="tag">Unity (C#)</span>
+        </div>
+      </div>
+      <div class="skillrow">
+        <span class="label mono">Systems</span>
+        <div class="tags">
+          <span class="tag">Multiplayer networking</span>
+          <span class="tag">Client-side prediction</span>
+          <span class="tag">Gameplay AI / State Tree</span>
+          <span class="tag">Flecs ECS</span>
+          <span class="tag">Procedural generation (PCG)</span>
+          <span class="tag">VR development</span>
+        </div>
+      </div>
+      <div class="skillrow">
+        <span class="label mono">Tools</span>
+        <div class="tags">
+          <span class="tag">Git / GitHub</span>
+          <span class="tag">Perforce</span>
+          <span class="tag">Rider</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Notion</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 class="h">Get in touch</h2>
+    <div class="contact-row">
+      <a href="mailto:atthiyya@gmail.com">atthiyya@gmail.com</a>
+      <span class="mono" style="color:var(--sub)">·</span>
+      <a href="https://www.linkedin.com/in/atthiyya/" target="_blank" rel="noopener">linkedin.com/in/atthiyya</a>
+      <span class="mono" style="color:var(--sub)">·</span>
+      <span class="mono" style="color:var(--sub)">Lisbon, Portugal</span>
+    </div>
+    <p class="copyright mono">© 2026 Atthiyya Agustian</p>
+  </footer>
+
+</div>
+</body>
+</html>
