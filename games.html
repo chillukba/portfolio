@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Games — Atthiyya Agustian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4ef; --ink:#1c1b19; --sub:#6b665e; --line:#d8d3c8;
+    --accent:#a8452f; --card:#ffffff;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#15140f; --ink:#efece4; --sub:#a29c8e; --line:#332f26; --accent:#e0704f; --card:#1d1b15;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15140f; --ink:#efece4; --sub:#a29c8e; --line:#332f26; --accent:#e0704f; --card:#1d1b15;
+  }
+  html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));}
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Space Grotesk', -apple-system, Segoe UI, sans-serif; line-height:1.55;}
+  .mono{font-family:'JetBrains Mono', ui-monospace, monospace;}
+  a{color:var(--accent);}
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px;}
+
+  header{position:sticky; top:0; z-index:10; background:var(--bg); border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top,0px);}
+  nav{max-width:820px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;}
+  .logo{font-weight:700; font-size:1.05rem;}
+  .navlinks{display:flex; gap:20px; flex-wrap:wrap; font-size:0.92rem;}
+  .navlinks a{color:var(--ink); text-decoration:none; opacity:0.75;}
+  .navlinks a:hover{opacity:1; color:var(--accent);}
+
+  .pagehead{padding:56px 0 32px;}
+  .pagehead h1{font-size:clamp(2rem, 5vw, 2.8rem); margin:0 0 10px;}
+  .pagehead p{color:var(--sub); max-width:60ch; margin:0;}
+
+  section{padding:0 0 48px;}
+  h2.h{font-size:0.8rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--sub); margin:0 0 20px; font-weight:600; padding-top:32px; border-top:1px solid var(--line);}
+  section:first-of-type h2.h{border-top:none; padding-top:0;}
+  h2.h::before{content:"— "; color:var(--accent);}
+
+  .gamelist{display:flex; flex-direction:column;}
+  .gamerow{display:grid; grid-template-columns:1fr auto; gap:6px 20px; padding:16px 0; border-bottom:1px solid var(--line); align-items:baseline;}
+  .gamerow h3{margin:0; font-size:1.05rem; grid-column:1;}
+  .gamerow .year{color:var(--sub); font-size:0.8rem; grid-column:2; white-space:nowrap;}
+  .gamerow p{margin:2px 0 0; color:var(--sub); font-size:0.92rem; grid-column:1 / -1; max-width:65ch;}
+  .gamerow .tag{font-size:0.75rem; color:var(--accent); display:block; margin-top:4px;}
+  .gamerow a.link{font-size:0.82rem; display:inline-block; margin-top:6px;}
+  .status{color:var(--sub); font-style:italic;}
+
+  footer{padding:32px 0 64px; color:var(--sub); font-size:0.85rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Atthiyya Agustian</div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="games.html">Games</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <div class="pagehead">
+    <h1>Games</h1>
+    <p>Every title I've shipped, prototyped, or contributed to — professional projects first, personal jams and student work below.</p>
+  </div>
+
+  <section>
+    <h2 class="h">Professional</h2>
+    <div class="gamelist">
+
+      <div class="gamerow">
+        <h3>Fillet Fury</h3><span class="year mono">2025–26 · PC</span>
+        <p>Co-op strategy game using a card-and-knife duel as its punishment mechanic. Led the team through full production as project lead.</p>
+        <span class="tag mono">Sundawn Studios · Lead Developer</span>
+      </div>
+
+      <div class="gamerow">
+        <h3>The Blind Warrior</h3><span class="year mono">2025 · PC</span>
+        <p>Story-driven action-adventure based on the Indonesian comic "Si Buta dari Gua Hantu." Researched and laid out levels, built PCG environment tools, implemented Blueprint world objects.</p>
+        <span class="tag mono">Rizero Studios · Level Designer / Programmer</span>
+        <a class="link mono" href="https://store.steampowered.com/app/3821910/The_Blind_Warrior/" target="_blank" rel="noopener">Steam page →</a>
+      </div>
+
+      <div class="gamerow">
+        <h3>The Lingering: Graveyard Visit</h3><span class="year mono">2025 · PC</span>
+        <p>Episodic atmospheric horror walking-sim drawn from Indonesian urban legends. Sole programmer for exploration, dialogue, and branching-narrative systems, in a retro PSX style.</p>
+        <span class="tag mono">Storytale · Solo Programmer (freelance)</span>
+        <a class="link mono" href="https://store.steampowered.com/app/3731150/The_Lingering_Graveyard_Visit/" target="_blank" rel="noopener">Steam page →</a>
+      </div>
+
+      <div class="gamerow">
+        <h3>[KOBAKO] It's You Again</h3><span class="year mono">2025 · PC</span>
+        <p>3D branching visual novel with eight character variants and multiple endings. Built dialogue, choice-branching, and save/load systems; streamlined the EN/JP localization pipeline.</p>
+        <span class="tag mono">Storytale · Programmer</span>
+        <span class="status mono">Unreleased / no public page yet</span>
+      </div>
+
+      <div class="gamerow">
+        <h3>Luffi: Homebound</h3><span class="year mono">2025 · PC</span>
+        <p>Cozy exploration game about returning home from art school. Implemented gameplay and animation, CommonUI for console, and GDD-based mini-games.</p>
+        <span class="tag mono">One Up Plus Entertainment · Gameplay Programmer</span>
+        <a class="link mono" href="https://oneupplus.itch.io/luffi-homebound-alpha-demo" target="_blank" rel="noopener">Itch.io page →</a>
+      </div>
+
+      <div class="gamerow">
+        <h3>XRUN Metaverse</h3><span class="year mono">2024–25 · Meta Quest / Android / Web</span>
+        <p>Cross-platform metaverse game spanning web, Play Store, and Meta Quest. Rebuilt the multiplayer framework, integrated AI voice interaction, maintained the team's Git pipeline.</p>
+        <span class="tag mono">XRUN Metaverse · VR Game Developer</span>
+      </div>
+
+      <div class="gamerow">
+        <h3>Denso Indonesia Driving Simulation</h3><span class="year mono">2024 · VR</span>
+        <p>Simulation-driving VR training experience built for PT. Denso Indonesia. Implemented gameplay mechanics and a VR UI framework.</p>
+        <span class="tag mono">Agate International · Freelance VR Developer</span>
+        <span class="status mono">Internal / enterprise — no public page</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="h">Personal &amp; game jams</h2>
+    <div class="gamelist">
+
+      <div class="gamerow">
+        <h3>17 — Rwa Bhineda</h3><span class="year mono">2021–22 · PC</span>
+        <p>Action game made for the Agate "Studi Independen" game jam program as game programmer, with a small student team.</p>
+        <a class="link mono" href="https://atthiyya.itch.io/17-rwa-bhineda" target="_blank" rel="noopener">Play on itch.io →</a>
+      </div>
+
+      <div class="gamerow">
+        <h3>The Space (VR)</h3><span class="year mono">Personal · VR</span>
+        <p>An educational VR game about the solar system, built for learning purposes.</p>
+        <a class="link mono" href="https://atthiyya.itch.io/the-space-vr" target="_blank" rel="noopener">View on itch.io →</a>
+      </div>
+
+      <div class="gamerow">
+        <h3>Lost</h3><span class="year mono">Personal · Browser</span>
+        <p>A short visual novel, playable in-browser.</p>
+        <a class="link mono" href="https://atthiyya.itch.io/lost" target="_blank" rel="noopener">Play on itch.io →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    Missing something? I'm still tracking down public links for a couple of unreleased titles — <a href="index.html#contact">get in touch</a> if you'd like more detail on any project.
+  </footer>
+
+</div>
+</body>
+</html>
